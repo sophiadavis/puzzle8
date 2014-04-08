@@ -1,5 +1,5 @@
 '''
-heuristic.py
+heuristic.py 
 by Anna Quinlan and Sophia Davis
 '''
 
@@ -16,6 +16,7 @@ def num_wrong_tiles(state):
 			countwrong += 1
 	return countwrong
 
+# given a square and state, returns whether the correct number is there
 def misplaced(state, square):
 	if square < 3:
 		if getTile(state,square) != square+1:
@@ -35,6 +36,7 @@ def misplaced(state, square):
 			return True
 	return False
 
+# give a value, returns the correct square index in the solution
 def get_correct_square(value):
 	if value == 1:
 		return 0
@@ -56,23 +58,26 @@ def get_correct_square(value):
 	else:
 		return 4
 
-# returns the Manhattan distance for the misplaced tiles for the 
+# returns the total Manhattan distance for the misplaced tiles for the 
 # indicated state.
 def manhattan_distance(state):
 	distance = 0
 	for i in range(9):
+	    
+	    # for all misplaced values
 		if misplaced(state,i):
 		
-			# actual location
+			# find actual location of the value
 			xi = xylocation(i)[0]
 			yi = xylocation(i)[1]
 			
-			# find correct location
+			# find correct location for the value
 			value = getTile(state, i)
 			j = get_correct_square(value)
 			xj = xylocation(j)[0]
 			yj = xylocation(j)[1]
 	
+	        # add Manhattan distance to total Manhattan distance
 			distance += math.fabs(xi - xj) + math.fabs(yi - yj)
 
 	return distance

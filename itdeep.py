@@ -1,9 +1,25 @@
 '''
 itdeep.py
 By Anna Quinlan and Sophia Davis
+
+## timed experiments:
+example 1 from test code:
+	levels 0 and 1: 0.00026822090148932 sec
+	levels 2: 0.000290870666504 sec
+
+	difference : 2.2649765014679988e-05 sec
+
+example 2 from test code:
+	levels 0 through 7: 0.1246697902679634 sec
+	level 8: 0.16855597496 sec
+	
+	difference: 0.04388618469203659 sec
+
+
 '''
 
 from puzzle8 import *
+import time
 
 # function for implementing iterative deepening
 # relies on depthlimitedsearch and getpath helper functions
@@ -15,9 +31,19 @@ def itdeep(state):
 		# node consists of state and parent node
 		# first node does not have parent, so is 0
 		node = (state, 0)
-		result = depthlimitedsearch(node, depth)
-		depth += 1
 		
+		## commented lines are for timed experiments 
+# 		start = time.time()
+
+		result = depthlimitedsearch(node, depth)
+		
+# 		end = time.time()
+# 		print "--- iteration: "
+# 		print depth
+# 		print end - start
+
+		depth += 1
+				
 		# when depthlimitedsearch finds solution, return path
 		# otherwise, continue searching at deeper depth
 		if result != "cutoff":

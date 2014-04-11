@@ -1,6 +1,6 @@
 from heuristic import *
 from itdeep import *
-#from astar import *
+from astar import *
 from puzzle8 import *
 import random
 
@@ -16,7 +16,7 @@ if manhattan_distance(s) != 4:
     print "Error: Manhattan Distance calculated incorrectly"
 else:
     print "."
-'''
+
 if itdeep(s) != [(6,3), (3,4)]:
     print "Error: Iterative Deepening calculating wrong answer"
 else:
@@ -32,7 +32,7 @@ if astar(s, manhattan_distance) != [(6,3), (3,4)]:
 else:
     print "."
 
-'''
+
 s = state([1,2,3,7,5,8,0,6,4])
 '''
 if num_wrong_tiles(s) != 4:
@@ -44,7 +44,7 @@ if manhattan_distance(s) != 8:
     print "Error: Manhattan Distance calculated incorrectly"
 else:
     print "."
-'''
+
 if itdeep(s) != [(6, 7), (7, 4), (4, 5), (5, 8), (8, 7), (7, 6), (6, 3), (3, 4)]:
     print "Error: Iterative Deepening calculating wrong answer"
 else:
@@ -59,5 +59,4 @@ if astar(s, manhattan_distance) != [(6, 7), (7, 4), (4, 5), (5, 8), (8, 7), (7, 
     print "Error: Astar incorrect with manhattan_distance heur."
 else:
     print "."
-'''
 

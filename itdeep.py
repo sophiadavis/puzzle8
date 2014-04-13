@@ -21,9 +21,14 @@ example 2 from test code:
 from puzzle8 import *
 import time
 
+count = 0
+
 # function for implementing iterative deepening
 # relies on depthlimitedsearch and getpath helper functions
 def itdeep(state):
+	start = time.time()
+	
+	global count
 	depth = 0
 	solutionfound = False
 	while solutionfound == False:
@@ -37,9 +42,9 @@ def itdeep(state):
 
 		result = depthlimitedsearch(node, depth)
 		
-# 		end = time.time()
-# 		print "--- iteration: "
-# 		print depth
+
+ 		print "--- iteration: "
+ 		print depth
 # 		print end - start
 
 		depth += 1
@@ -48,7 +53,14 @@ def itdeep(state):
 		# otherwise, continue searching at deeper depth
 		if result != "cutoff":
 			solutionfound = True
+			end = time.time()
+			print "COUNT"
+			print count
+			print "ITDEEP time"
+			print end - start
 			return getpath(result)
+			
+			
 
 # function for finding path to solution (each node stores its parent)			
 def getpath(result):
@@ -76,8 +88,12 @@ def getpath(result):
 # - "cutoff" - no solution found within limit
 # - "failure" - entire search space was searched and no solution exists
 def depthlimitedsearch(node, limit):
+
+	global count
 	
 	state = node[0]
+	count += 1
+	
 	if state == solution():
 		return node
 	elif limit == 0:
